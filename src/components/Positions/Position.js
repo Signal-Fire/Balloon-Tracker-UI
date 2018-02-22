@@ -10,7 +10,7 @@ export default class Position extends Component {
         }
     }
     componentDidMount() {
-        return fetch('http://localhost:8080/find', {
+        return fetch('http://90.240.40.70:8080/find', {
           method: 'GET',
           headers: {
             'Access-Control-Allow-Origin' : '*',

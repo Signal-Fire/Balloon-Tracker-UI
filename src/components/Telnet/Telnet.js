@@ -28,7 +28,7 @@ export default class Telnet extends Component {
     }
 
     handleSubmit(event) {
-        return fetch('http://localhost:8080/navigate', {
+        return fetch('http://90.240.40.70:8080/navigate', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
