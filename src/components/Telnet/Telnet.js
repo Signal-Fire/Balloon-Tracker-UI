@@ -2,15 +2,19 @@
 import React, { Component } from 'react';
 import { Segment, Grid, Form, Button, Input, Radio } from 'semantic-ui-react';
 
+import { TELNET_IP, TELNET_PORT, NAVIGATE_URL } from '../../config';
+
+import axios from 'axios';
+
 export default class Telnet extends Component {
     constructor() {
         super();
 
         this.state = {
-            telnet_ip : "192.168.1.25",
-            telnet_port : "4242",
+            telnet_ip : TELNET_IP,
+            telnet_port : TELNET_PORT,
             checkbox_value: true
-        }
+        };
 
         this.handleAddressChange = this.handleAddressChange.bind(this);
         this.handlePortChange = this.handlePortChange.bind(this);
@@ -21,27 +25,24 @@ export default class Telnet extends Component {
     handleAddressChange(event) {
         this.setState({
             telnet_ip: event.target.value
-        })
+        });
     }
 
     handlePortChange(event) {
         this.setState({
             telnet_port: event.target.value
-        })
+        });
     }
 
     handleSubmit(event) {
-        return fetch('http://90.240.40.70:8080/navigate', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                curr: this.state.checkbox_value,
-                ip_address: this.state.telnet_ip,
-                port: this.state.telnet_port
-            })
+        axios.post(NAVIGATE_URL, {
+            curr : this.state.checkbox_value,
+            ip_address : this.state.telnet_ip,
+            port : this.state.telnet_port
+        }).then(navigation => {
+            console.log('Navigate');
+        }).catch(error => {
+            console.error(error);
         });
     }
 
@@ -54,9 +55,6 @@ export default class Telnet extends Component {
     render() {
         return (
             <Segment>
-                <Grid.Row>
-                    <h2>Telnet IP</h2>
-                </Grid.Row>
                 <Grid.Row>
                 <Form onSubmit = {this.handleSubmit}>
                     <Form.Group widths='equal'>
