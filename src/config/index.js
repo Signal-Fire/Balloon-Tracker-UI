@@ -5,6 +5,7 @@ const DELETE_URL = API_URL + "/delete";
 const FIND_URL = API_URL + "/find";
 const PREDICT_URL = API_URL + "/predict";
 const NAVIGATE_URL = API_URL + "/navigate";
+const AUTO_NAV_URL = API_URL + "/auto-nav";
 
 /* Telnet */
 const TELNET_IP = "192.168.1.25";
@@ -18,5 +19,6 @@ export {
     PREDICT_URL,
     TELNET_IP,
     TELNET_PORT,
-    NAVIGATE_URL
+    NAVIGATE_URL,
+    AUTO_NAV_URL
 };

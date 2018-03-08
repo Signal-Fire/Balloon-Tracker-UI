@@ -2,9 +2,13 @@
 import React, { Component } from 'react';
 import { Segment, Grid, Form, Button, Input, Radio } from 'semantic-ui-react';
 
-import { TELNET_IP, TELNET_PORT, NAVIGATE_URL } from '../../config';
+import { TELNET_IP, TELNET_PORT, NAVIGATE_URL, AUTO_NAV_URL } from '../../config';
 
 import axios from 'axios';
+
+import Toggle from 'react-toggle';
+
+import './react-toggle-css.css';
 
 export default class Telnet extends Component {
     constructor() {
@@ -13,18 +17,37 @@ export default class Telnet extends Component {
         this.state = {
             telnet_ip : TELNET_IP,
             telnet_port : TELNET_PORT,
-            checkbox_value: true
+            checkbox_value: true,
+            autoNavEnabled : false
         };
 
         this.handleAddressChange = this.handleAddressChange.bind(this);
         this.handlePortChange = this.handlePortChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleAutoChange = this.handleAutoChange.bind(this);
     }
 
     handleAddressChange(event) {
         this.setState({
             telnet_ip: event.target.value
+        });
+    }
+
+    handleAutoChange() {
+        this.setState({
+            autoNavEnabled : !this.state.autoNavEnabled
+        });
+
+        axios.post(AUTO_NAV_URL, {
+            curr : this.state.checkbox_value,
+            ip : this.state.telnet_ip,
+            port : this.state.telnet_port,
+            activate : !this.state.autoNavEnabled 
+        }).then(result => {
+            console.log(result);
+        }).catch(error => {
+            console.log(error);
         });
     }
 
@@ -64,7 +87,7 @@ export default class Telnet extends Component {
                     <Form.Group widths='equal'>
                     <Form.Field>
                         <Radio
-                            label='Us Current'
+                            label='Use Current Location'
                             name='radioGroup'
                             value='current'
                             checked={this.state.checkbox_value}
@@ -73,7 +96,7 @@ export default class Telnet extends Component {
                     </Form.Field>
                     <Form.Field>
                         <Radio
-                            label='Use Predictor'
+                            label='Use Predicted Location'
                             name='radioGroup'
                             value='predictor'
                             checked={!this.state.checkbox_value}
@@ -81,7 +104,20 @@ export default class Telnet extends Component {
                         />
                     </Form.Field>
                     </Form.Group>
-                    <Form.Field id='form-button-control-public' control={Button} content='Navigate' />
+                    <Form.Group widths = 'equal'>
+                        <Form.Field 
+                            id='form-button-control-public' 
+                            control={Button} 
+                            content='Navigate' />
+                        <Form.Field>
+                            <label>
+                                <Toggle
+                                    defaultChecked={this.state.autoNavEnabled}
+                                    onChange={this.handleAutoChange} />
+                                <span>Auto Navigation</span>
+                                </label>
+                        </Form.Field>
+                    </Form.Group>
                 </Form>
                 </Grid.Row>
             </Segment>
