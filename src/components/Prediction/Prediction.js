@@ -42,7 +42,7 @@ export default class Prediciton extends Component {
                         <p><strong>Lat:</strong> {this.state.position.lat}</p>
                     </Grid.Column>
                     <Grid.Column>
-                        <p><strong>Lon:</strong> {this.state.position.lat}</p>
+                        <p><strong>Lon:</strong> {this.state.position.lon}</p>
                     </Grid.Column>
                     <br />
                 </Grid.Row>
