@@ -1,5 +1,10 @@
-import React, { Component } from 'react'
+/* jshint esversion: 6 */
+import React, { Component } from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
+
+import { PREDICT_URL } from '../../config';
+
+import axios from 'axios';
 
 export default class Prediciton extends Component {
     constructor() {
@@ -7,38 +12,19 @@ export default class Prediciton extends Component {
         this.state = {
             isLoading: true,
             position: {}
-        }
+        };
     }
+
     componentDidMount() {
-        return fetch('http://90.240.40.70:8080/predict', {
-          method: 'GET',
-          headers: {
-            'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods': '*',
-            'Access-Control-Allow-Credentials': 'true',
-            'Access-Control-Allow-Headers': 'Access-Control-Allow-Origin'
-          }
-        })
-          .then((response) => response.json())
-          .then((responseJson) => {
+        axios.get(PREDICT_URL).then(prediction => {
             this.setState({
-              isLoading: false,
-              position: this.populatePosition(responseJson)
-            }, function() {
-            });
-          })
-          .catch((error) => {
+                isLoading: false,
+                position: prediction.data
+              }, function() {
+              });
+        }).catch(error => {
             console.error(error);
-          });
-    }
-
-    populatePosition(json) {
-        var position = {};
-
-        position.lat = json.lat;
-        position.lon = json.lon;
-        
-        return position;
+        });
     }
 
     render() {
@@ -52,7 +38,7 @@ export default class Prediciton extends Component {
                         <p><strong>Lat:</strong> {this.state.position.lat}</p>
                     </Grid.Column>
                     <Grid.Column>
-                        <p><strong>Lon:</strong> {this.state.position.lon}</p>
+                        <p><strong>Lon:</strong> {this.state.position.lat}</p>
                     </Grid.Column>
                     <br />
                 </Grid.Row>
