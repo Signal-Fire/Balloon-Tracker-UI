@@ -1,3 +1,4 @@
+/* jshint esversion: 6*/
 import Home from '../Home/Home';
 import Position from '../Positions/Position';
 import Prediction from '../Prediction/Prediction';

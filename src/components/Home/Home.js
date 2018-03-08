@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 import React, { Component } from 'react'
 import { Grid } from 'semantic-ui-react';
 import { Position, Prediction, Predictor, Telnet } from '../Exports/Components';

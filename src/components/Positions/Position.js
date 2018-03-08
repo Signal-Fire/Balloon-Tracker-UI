@@ -1,5 +1,9 @@
+/* jshint esversion: 6 */
 import React, { Component } from 'react'
 import { Grid, Segment } from 'semantic-ui-react';
+import { FIND_URL } from '../../config';
+
+import axios from 'axios';
 
 export default class Position extends Component {
     constructor() {
@@ -7,45 +11,24 @@ export default class Position extends Component {
         this.state = {
             isLoading: true,
             position: {}
-        }
+        };
     }
+
     componentDidMount() {
-        return fetch('http://90.240.40.70:8080/find', {
-          method: 'GET',
-          headers: {
-            'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods': '*',
-            'Access-Control-Allow-Credentials': 'true',
-            'Access-Control-Allow-Headers': 'Access-Control-Allow-Origin'
-          }
-        })
-          .then((response) => response.json())
-          .then((responseJson) => {
-            this.setState({
-              isLoading: false,
-              position: this.populatePositions(responseJson)
-            }, function() {
-            });
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-    }
-
-    populatePositions(json) {
-        let pos = json.length - 5;
-        var position = {};
-
-        position.lat = json[pos].lat;
-        position.lon = json[pos].long;
-        position.alt = json[pos].alt;
-        
-        return position;
+        axios.get(FIND_URL).then(res => {
+            var pos = res.data.length - 1;
+            this.setState( { 
+                isLoading: false,
+                position: res.data[pos]
+             });
+        }).catch(err => {
+            console.error(err);
+        });
     }
 
     render() {
         return (
-            <Segment>
+            <Segment loading = {this.state.isLoading}>
                 <Grid.Row>
                     <h2>Current Location</h2>
                 </Grid.Row>
