@@ -8,13 +8,6 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <Grid divided='vertically'>
-                    <Grid.Row columns={1}>
-                        <Grid.Column>
-                            <h1>Balloon Tracker</h1>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
                 <Grid columns={2}>
                     <Grid.Column>
                         <Position />
