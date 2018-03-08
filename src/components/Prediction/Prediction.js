@@ -29,7 +29,7 @@ export default class Prediciton extends Component {
 
     render() {
         return (
-            <Segment>
+            <Segment loading = {this.state.isLoading}>
                 <Grid.Row>
                     <h2>Predicted Location</h2>
                 </Grid.Row>
