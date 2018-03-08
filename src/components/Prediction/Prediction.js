@@ -17,11 +17,15 @@ export default class Prediciton extends Component {
 
     componentDidMount() {
         axios.get(PREDICT_URL).then(prediction => {
-            this.setState({
-                isLoading: false,
-                position: prediction.data
-              }, function() {
-              });
+            if (prediction.status === 200) {
+                this.setState({
+                    isLoading: false,
+                    position: prediction.data
+                }, function() {
+                });
+            } else {
+                this.forceUpdate();
+            }
         }).catch(error => {
             console.error(error);
         });

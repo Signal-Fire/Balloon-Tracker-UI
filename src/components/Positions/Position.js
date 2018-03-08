@@ -16,13 +16,17 @@ export default class Position extends Component {
 
     componentDidMount() {
         axios.get(FIND_URL).then(res => {
-            var pos = res.data.length - 1;
-            this.setState( { 
-                isLoading: false,
-                position: res.data[pos]
-             });
+            if (res.status === 200) {
+                var pos = res.data.length - 1;
+                this.setState( { 
+                    isLoading: false,
+                    position: res.data[pos]
+                });
+            } else {
+                this.forceUpdate();
+            }
         }).catch(err => {
-            console.error(err);
+            console.log("OH NOOO");
         });
     }
 
@@ -37,7 +41,7 @@ export default class Position extends Component {
                         <p><strong>Lat:</strong> {this.state.position.lat}</p>
                     </Grid.Column>
                     <Grid.Column>
-                        <p><strong>Lon:</strong> {this.state.position.lon}</p>
+                        <p><strong>Lon:</strong> {this.state.position.long}</p>
                     </Grid.Column>
                     <Grid.Column>
                         <p><strong>Alt:</strong> {this.state.position.alt} <small>m</small></p>

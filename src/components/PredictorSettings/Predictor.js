@@ -15,14 +15,17 @@ export default class PredictorSettings extends Component {
         };
     }
     componentDidMount() {
-        axios.get(PREDICT_URL).then(prediction => {
-            console.log(prediction);
-            this.setState({
-                isLoading: false,
-                prediction: prediction.data
-            })
+        axios.get(PREDICT_URL).then(prediction => {           
+            if (prediction.status === 200) {
+                this.setState({
+                    isLoading: false,
+                    prediction: prediction.data
+                });
+            } else {
+                this.forceUpdate();
+            }
         }).catch(error => {
-            console.error(error);
+            this.forceUpdate();
         });
     }
 
