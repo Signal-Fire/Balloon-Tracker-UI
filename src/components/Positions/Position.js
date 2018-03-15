@@ -17,10 +17,9 @@ export default class Position extends Component {
     componentDidMount() {
         axios.get(FIND_URL).then(res => {
             if (res.status === 200) {
-                var pos = res.data.length - 1;
                 this.setState( { 
                     isLoading: false,
-                    position: res.data[pos]
+                    position: res.data
                 });
             } else {
                 this.forceUpdate();
