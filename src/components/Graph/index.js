@@ -22,6 +22,7 @@ export default class Graph extends Component {
                     isLoading: false,
                     graphData: res.data
                 });
+                console.log(this.state);
             } else {
                 this.forceUpdate();
             }
