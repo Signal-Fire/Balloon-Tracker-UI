@@ -34,8 +34,8 @@ export default class Graph extends Component {
     render() {
         return (
             <Segment loading = {this.state.isLoading}>
-                <ResponsiveContainer width={700} height="80%">
-                    <AreaChart width={600} height={400} data={this.state.graphData}
+                <ResponsiveContainer width="80%" height={800}>
+                    <AreaChart data={this.state.graphData}
                             margin={{top: 10, right: 30, left: 0, bottom: 0}}>
                         <XAxis dataKey="time"/>
                         <YAxis/>
