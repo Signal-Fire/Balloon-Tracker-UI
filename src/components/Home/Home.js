@@ -18,7 +18,7 @@ export default class Home extends Component {
                 </Grid>
                 <Grid columns={2}>
                     <Grid.Column>
-                        
+                        <Graph />
                     </Grid.Column>
                     <Grid.Column>
                         <Predictor />
@@ -26,7 +26,7 @@ export default class Home extends Component {
                 </Grid>
                 <Grid columns={2}>
                     <Grid.Column>
-                        <Graph />
+                        
                     </Grid.Column>
                     <Grid.Column>
                         <Telnet />
