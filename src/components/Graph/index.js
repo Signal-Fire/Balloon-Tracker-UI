@@ -34,7 +34,7 @@ export default class Graph extends Component {
     render() {
         return (
             <Segment loading = {this.state.isLoading}>
-                <Grid columns={1}>
+                <Grid.Row>
                     <ResponsiveContainer width="80%" height={600}>
                         <AreaChart data={this.state.graphData}
                                 margin={{top: 10, right: 30, left: 0, bottom: 0}}>
@@ -45,7 +45,7 @@ export default class Graph extends Component {
                             <Area type='monotone' dataKey='alt' stroke='#8884d8' fill='#8884d8' />
                         </AreaChart>
                     </ResponsiveContainer>
-                </Grid>
+                </Grid.Row>
             </Segment> 
         )
     }
