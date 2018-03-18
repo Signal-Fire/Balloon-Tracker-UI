@@ -35,7 +35,7 @@ export default class Graph extends Component {
         return (
             <Segment loading = {this.state.isLoading}>
                 <Grid.Row>
-                    <ResponsiveContainer width="100%" height={600}>
+                    <ResponsiveContainer width="100%" height={300}>
                         <AreaChart data={this.state.graphData}
                                 margin={{top: 10, right: 30, left: 0, bottom: 0}}>
                             <XAxis dataKey="time"/>
