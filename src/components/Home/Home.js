@@ -18,19 +18,16 @@ export default class Home extends Component {
                 </Grid>
                 <Grid columns={2}>
                     <Grid.Column>
-                        <Graph />
+                        <Telnet />
                     </Grid.Column>
                     <Grid.Column>
                         <Predictor />
                     </Grid.Column>
                 </Grid>
-                <Grid columns={2}>
+                <Grid columns={1}>
                     <Grid.Column>
-                        
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Telnet />
-                    </Grid.Column>
+                        <Graph />
+                    </Grid.Column>                    
                 </Grid>
             </div>
         )
