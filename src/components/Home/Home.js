@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
-import { Position, Prediction, Predictor, Telnet } from '../Exports/Components';
+import { Position, Prediction, Predictor, Telnet, Graph } from '../Exports/Components';
 
 export default class Home extends Component {
     
@@ -26,7 +26,7 @@ export default class Home extends Component {
                 </Grid>
                 <Grid columns={2}>
                     <Grid.Column>
-                        
+                        <Graph />
                     </Grid.Column>
                     <Grid.Column>
                         <Telnet />
