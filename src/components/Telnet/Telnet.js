@@ -79,10 +79,10 @@ export default class Telnet extends Component {
         return (
             <Segment>
                 <Grid.Row>
-                <Form onSubmit = {this.handleSubmit}>
+                <Form stackable onSubmit = {this.handleSubmit}>
                     <Form.Group widths='equal'>
-                        <Form.Field id='form-input-control-first-name' control={Input} label='IP' placeholder='Telnet Device IP' value = {this.state.telnet_ip} onChange = {this.handleAddressChange} />
-                        <Form.Field id='form-input-control-last-name' control={Input} label='Port' placeholder='Telnet Device Port' value = {this.state.telnet_port} onChange = {this.handlePortChange}/>                        
+                        <Form.Field id='form-input-control-first-name' control={Input} label='IP' placeholder='Telnet IP' value = {this.state.telnet_ip} onChange = {this.handleAddressChange} />
+                        <Form.Field id='form-input-control-last-name' control={Input} label='Port' placeholder='Telnet Port' value = {this.state.telnet_port} onChange = {this.handlePortChange}/>                        
                     </Form.Group>
                     <Form.Group widths='equal'>
                     <Form.Field>
