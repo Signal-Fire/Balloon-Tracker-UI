@@ -1,0 +1,6 @@
+{
+    "name" : "graph-page",
+    "main" : "index.js",
+    "author" : "Henry Pye",
+    "version" : "1.0.0"
+}

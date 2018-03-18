@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 const API_URL = "http://192.168.1.22:8080";
+const GRAPH_URL = API_URL + "/graph-data";
 const INSERT_URL = API_URL + "/insert";
 const DELETE_URL = API_URL + "/delete";
 const FIND_URL = API_URL + "/find";
@@ -20,5 +21,6 @@ export {
     TELNET_IP,
     TELNET_PORT,
     NAVIGATE_URL,
-    AUTO_NAV_URL
+    AUTO_NAV_URL,
+    GRAPH_URL
 };
