@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 import React, { Component } from 'react';
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Segment } from 'semantic-ui-react';
 import { GRAPH_URL } from '../../config';
 
