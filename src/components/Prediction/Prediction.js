@@ -16,10 +16,7 @@ export default class Prediciton extends Component {
     }
 
     componentDidMount() {
-        console.log(PREDICT_URL);
-
         axios.get(PREDICT_URL).then(prediction => {
-            console.log(prediction);
             if (prediction.status === 200) {
                 this.setState({
                     isLoading: false,
