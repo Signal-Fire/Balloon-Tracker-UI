@@ -45,9 +45,8 @@ export default class Telnet extends Component {
             port : this.state.telnet_port,
             activate : !this.state.autoNavEnabled 
         }).then(result => {
-            console.log(result);
         }).catch(error => {
-            console.log(error);
+            console.log("Error during Auto Navigation");
         });
     }
 
@@ -63,9 +62,8 @@ export default class Telnet extends Component {
             ip_address : this.state.telnet_ip,
             port : this.state.telnet_port
         }).then(navigation => {
-            console.log('Navigate');
         }).catch(error => {
-            console.error(error);
+            console.error("Error during Navigation");
         });
     }
 

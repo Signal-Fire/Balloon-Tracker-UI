@@ -27,7 +27,7 @@ export default class Graph extends Component {
                 this.forceUpdate();
             }
         }).catch(err => {
-            console.log("OH NOOO");
+            console.log("Error getting Graphing Data");
         });
     }
 

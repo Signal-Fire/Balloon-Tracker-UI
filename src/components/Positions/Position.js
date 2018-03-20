@@ -25,7 +25,7 @@ export default class Position extends Component {
                 this.forceUpdate();
             }
         }).catch(err => {
-            console.log("OH NOOO");
+            console.log("Error while finding data");
         });
     }
 
