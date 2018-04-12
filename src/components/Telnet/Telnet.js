@@ -17,7 +17,7 @@ export default class Telnet extends Component {
         this.state = {
             telnet_ip : TELNET_IP,
             telnet_port : TELNET_PORT,
-            checkbox_value: true,
+            checkbox_value: false,
             autoNavEnabled : false
         };
 
