@@ -14,7 +14,7 @@ export default class Prediciton extends Component {
             position: {}
         };
         
-        this.findPredictorDetails() = this.findPredictorDetails.bind(this);
+        this.findPredictorDetails = this.findPredictorDetails.bind(this);
     }
 
     findPredictorDetails() {

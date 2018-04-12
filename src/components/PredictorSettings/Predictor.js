@@ -14,7 +14,7 @@ export default class PredictorSettings extends Component {
             prediction: {}
         };
 
-        this.findPredictorDetails() = this.findPredictorDetails.bind(this);
+        this.findPredictorDetails = this.findPredictorDetails.bind(this);
     }
 
     findPredictorDetails() {
