@@ -13,9 +13,11 @@ export default class Prediciton extends Component {
             isLoading: true,
             position: {}
         };
+        
+        this.findPredictorDetails() = this.findPredictorDetails.bind(this);
     }
 
-    componentDidMount() {
+    findPredictorDetails() {
         axios.get(PREDICT_URL).then(prediction => {
             if (prediction.status === 200) {
                 this.setState({
@@ -24,11 +26,15 @@ export default class Prediciton extends Component {
                 }, function() {
                 });
             } else {
-                this.forceUpdate();
+                this.findPredictorDetails();
             }
         }).catch(error => {
-            console.error(error);
+            this.findPredictorDetails();
         });
+    }
+
+    componentDidMount() {
+        this.findPredictorDetails();
     }
 
     render() {

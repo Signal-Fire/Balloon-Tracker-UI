@@ -13,8 +13,12 @@ export default class PredictorSettings extends Component {
             isLoading: true,
             prediction: {}
         };
+
+        this.findPredictorDetails() = this.findPredictorDetails.bind(this);
     }
-    componentDidMount() {
+
+    findPredictorDetails() {
+        console.log('Details being found');
         axios.get(PREDICT_URL).then(prediction => {           
             if (prediction.status === 200) {
                 this.setState({
@@ -22,11 +26,16 @@ export default class PredictorSettings extends Component {
                     prediction: prediction.data
                 });
             } else {
-                this.forceUpdate();
+                console.log('Finding details again');
+                this.findPredictorDetails();
             }
         }).catch(error => {
-            this.forceUpdate();
+            this.findPredictorDetails();
         });
+    }
+
+    componentDidMount() {
+        this.findPredictorDetails();
     }
 
     render() {
