@@ -45,9 +45,8 @@ export default class Telnet extends Component {
             port : this.state.telnet_port,
             activate : !this.state.autoNavEnabled 
         }).then(result => {
-            console.log(result);
         }).catch(error => {
-            console.log(error);
+            console.log("Error during Auto Navigation");
         });
     }
 
@@ -63,9 +62,8 @@ export default class Telnet extends Component {
             ip_address : this.state.telnet_ip,
             port : this.state.telnet_port
         }).then(navigation => {
-            console.log('Navigate');
         }).catch(error => {
-            console.error(error);
+            console.error("Error during Navigation");
         });
     }
 
@@ -80,9 +78,9 @@ export default class Telnet extends Component {
             <Segment>
                 <Grid.Row>
                 <Form onSubmit = {this.handleSubmit}>
-                    <Form.Group widths='equal'>
-                        <Form.Field id='form-input-control-first-name' control={Input} label='IP' placeholder='Telnet Device IP' value = {this.state.telnet_ip} onChange = {this.handleAddressChange} />
-                        <Form.Field id='form-input-control-last-name' control={Input} label='Port' placeholder='Telnet Device Port' value = {this.state.telnet_port} onChange = {this.handlePortChange}/>                        
+                    <Form.Group grouped>
+                        <Form.Field id='form-input-control-first-name' control={Input} label='IP' placeholder='Telnet IP' value = {this.state.telnet_ip} onChange = {this.handleAddressChange} />
+                        <Form.Field id='form-input-control-last-name' control={Input} label='Port' placeholder='Telnet Port' value = {this.state.telnet_port} onChange = {this.handlePortChange}/>                        
                     </Form.Group>
                     <Form.Group widths='equal'>
                     <Form.Field>
